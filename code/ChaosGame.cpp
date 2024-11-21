@@ -19,6 +19,19 @@ int main()
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
 
+    Font font;
+	Text text;
+	text.setFont(font);
+
+    if (!font.loadFromFile("arial.ttf")) // Ensure "arial.ttf" is in the same directory
+    {
+        return -1;
+    }
+	
+	text.setString("Please click on any three points on the screen to create the vertices for the triangle");
+	text.setCharacterSize(24); 
+	text.setFillColor(Color::Red);
+
 	while (window.isOpen())
 	{
 		/*
@@ -26,6 +39,8 @@ int main()
 		Handle the players input
 		****************************************
 		*/
+
+		
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -50,6 +65,7 @@ int main()
 			    {
 				///fourth click
 				///push back to points vector
+				points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
 			    }
 			}
 		    }
@@ -70,6 +86,17 @@ int main()
 		    ///select random vertex
 		    ///calculate midpoint between random vertex and the last point in the vector
 		    ///push back the newly generated coord.
+
+			for (int i = 0; i < 1000; i++) 
+            {
+                int randomVertex = rand() % vertices.size();
+                Vector2f lastPoint = points.back();
+                Vector2f midpoint(
+                    (lastPoint.x + vertices[randomVertex].x) / 2,
+                    (lastPoint.y + vertices[randomVertex].y) / 2);
+                points.push_back(midpoint);
+				
+            } 
 		}
 	
 		/*
@@ -85,6 +112,7 @@ int main()
 		    rect.setFillColor(Color::Blue);
 		    window.draw(rect);
 		}
+		window.draw(text);
 		window.display();
 	}
 }
