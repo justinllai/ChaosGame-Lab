@@ -19,6 +19,8 @@ int main()
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
 
+<<<<<<< HEAD
+=======
     Font font;
 	Text text;
 	text.setFont(font);
@@ -34,6 +36,7 @@ int main()
 	text.setFillColor(Color::Red);
 	
 
+>>>>>>> d22911fcb1fa661516599706a7fdaf16382e81a5
 	while (window.isOpen())
 	{
 		/*
@@ -41,8 +44,11 @@ int main()
 		Handle the players input
 		****************************************
 		*/
+<<<<<<< HEAD
+=======
 
 		
+>>>>>>> d22911fcb1fa661516599706a7fdaf16382e81a5
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -67,7 +73,10 @@ int main()
 			    {
 				///fourth click
 				///push back to points vector
+<<<<<<< HEAD
+=======
 				points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+>>>>>>> d22911fcb1fa661516599706a7fdaf16382e81a5
 			    }
 			}
 		    }
@@ -88,6 +97,8 @@ int main()
 		    ///select random vertex
 		    ///calculate midpoint between random vertex and the last point in the vector
 		    ///push back the newly generated coord.
+<<<<<<< HEAD
+=======
 
 
 			for (int i = 0; i < 10000; i++) 
@@ -100,6 +111,7 @@ int main()
                 points.push_back(midpoint);
 				
             } 
+>>>>>>> d22911fcb1fa661516599706a7fdaf16382e81a5
 		}
 	
 		/*
@@ -115,6 +127,7 @@ int main()
 		    rect.setFillColor(Color::Blue);
 		    window.draw(rect);
 		}
+<<<<<<< HEAD
 
 		for(int i = 0; i < static_cast<int>(points.size()); i++)
 		{
@@ -125,7 +138,12 @@ int main()
 		}
 		
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 7556d76b3bdf9bbb1945a1dc5c9ca10176864893
 		window.draw(text);
+>>>>>>> d22911fcb1fa661516599706a7fdaf16382e81a5
 		window.display();
 	
 	}
