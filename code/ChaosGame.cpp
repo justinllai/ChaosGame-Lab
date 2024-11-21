@@ -22,8 +22,9 @@ int main()
     Font font;
 	Text text;
 	text.setFont(font);
+	text.setPosition(0, 0);
 
-    if (!font.loadFromFile("arial.ttf")) // Ensure "arial.ttf" is in the same directory
+    if (!font.loadFromFile("Arial.ttf")) // Ensure "arial.ttf" is in the same directory
     {
         return -1;
     }
@@ -31,6 +32,7 @@ int main()
 	text.setString("Please click on any three points on the screen to create the vertices for the triangle");
 	text.setCharacterSize(24); 
 	text.setFillColor(Color::Red);
+	
 
 	while (window.isOpen())
 	{
@@ -87,7 +89,8 @@ int main()
 		    ///calculate midpoint between random vertex and the last point in the vector
 		    ///push back the newly generated coord.
 
-			for (int i = 0; i < 1000; i++) 
+
+			for (int i = 0; i < 10000; i++) 
             {
                 int randomVertex = rand() % vertices.size();
                 Vector2f lastPoint = points.back();
@@ -105,14 +108,26 @@ int main()
 		****************************************
 		*/
 		window.clear();
-		for(int i = 0; i < vertices.size(); i++)
+		for(int i = 0; i < static_cast<int>(vertices.size()); i++)
 		{
 		    RectangleShape rect(Vector2f(10,10));
 		    rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
 		    rect.setFillColor(Color::Blue);
 		    window.draw(rect);
 		}
+
+		for(int i = 0; i < static_cast<int>(points.size()); i++)
+		{
+			RectangleShape rect(Vector2f(2,2)); //smaller size
+		    rect.setPosition(Vector2f(points[i].x, points[i].y));
+		    rect.setFillColor(Color::Red);
+		    window.draw(rect);
+		}
+		
+
 		window.draw(text);
 		window.display();
+	
 	}
+	
 }
